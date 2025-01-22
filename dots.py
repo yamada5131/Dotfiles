@@ -48,7 +48,7 @@ def copy_config(src, dest):
 def stow_files():
     title()
     console.print("Stowing dotfiles...", style="bold green")
-    subprocess.run(["stow", "dots"], check=True)
+    subprocess.run(["stow", "--adopt", "dots"], check=True)
 
 def install_packages():
     title()
@@ -70,11 +70,11 @@ def install_tpm_plugins():
     ).ask()
 
     if tpm_choice == "Yes":
-        tpm_dir = os.path.expanduser("~/.tmux/plugins")
+        tpm_dir = os.path.expanduser("~/.tmux/plugins/tpm")
         subprocess.run(["rm", "-rf", tpm_dir], check=True)
         os.makedirs(tpm_dir, exist_ok=True)
         subprocess.run(["git", "clone", "https://github.com/tmux-plugins/tpm", tpm_dir], check=True)
-        subprocess.run([os.path.join(tpm_dir, "tpm/scripts/install_plugins.sh")], check=True)
+        subprocess.run([os.path.join(tpm_dir, "scripts/install_plugins.sh")], check=True)
     else:
         console.print("Skipping TPM plugins installation.", style="bold yellow")
 

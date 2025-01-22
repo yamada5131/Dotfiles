@@ -5,6 +5,26 @@ return {
     lazy = false,
     opts = require "configs.conform",
   },
+	 "nvim-lua/plenary.nvim",
+ { "nvim-tree/nvim-web-devicons", lazy = true },
+
+ {
+   "nvchad/ui",
+    config = function()
+      require "nvchad" 
+    end
+ },
+
+ {
+    "nvchad/base46",
+    lazy = true,
+    build = function()
+      require("base46").load_all_highlights()
+    end,
+ },
+
+ "nvchad/volt", -- optional, needed for theme switcher
+ -- or just use Telescope themes
 
   -- Estos son los plugins nuevos añadidos:
   {
@@ -67,11 +87,6 @@ return {
     opts = {
       git = { enable = true },
     },
-  },
-
-  {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
   },
 
   {
