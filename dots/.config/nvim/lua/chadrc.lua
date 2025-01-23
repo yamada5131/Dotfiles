@@ -1,8 +1,12 @@
----@type ChadrcConfig
 local M = {}
 
 M.base46 = {
-	theme = "chadwal",
+  theme = "chadwal",
+}
+
+M.ui = {
+  statusline = { theme = "vscode" },
+  tabufline = { enabled = false },
 }
 
 return M
